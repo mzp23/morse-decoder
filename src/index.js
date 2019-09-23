@@ -47,16 +47,12 @@ function decode(expr) {
           start += 10;
           end += 10;
         }
-        let arrWithOutZeroOnTheStart = exprArr.map(el => {
-          while (el.startsWith(0)) {
-            el = el.substring(1);
-          }
-          return el;
-        });
-        let decodedArr = arrWithOutZeroOnTheStart.map(el => {
+    
+        let decodedArr = exprArr.map(el => {
           let decodedEl = el;
           decodedEl = decodedEl.replace(/10/g, ".");
           decodedEl = decodedEl.replace(/11/g, "-");
+          decodedEl = decodedEl.replace(/0/g, "");
           return decodedEl
         })
         let decodedStr = ``;
